@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 保留原有 title 和样式链接 -->
+    <title>About - FATE</title> <!-- 不同页面对应不同 title -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- 修正后的预加载脚本：仅初始化语言样式，无 !important，不干扰 JS 实时修改 -->
+    <script>
+        (function() {
+            const currentLang = localStorage.getItem('fate-lang') || 'en';
+            // 1. 初始化 html lang 属性
+            document.documentElement.lang = currentLang === 'zh' ? 'zh-CN' : 'en';
+            // 2. 预加载初始语言样式（无 !important，让 JS 可覆盖）
+            const style = document.createElement('style');
+            style.textContent = currentLang === 'zh' 
+                ? `.zh-content { display: block; } .en-content { display: none; }`
+                : `.zh-content { display: none; } .en-content { display: block; }`;
+            document.head.appendChild(style);
+        })();
+    </script>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav>
+        <div class="nav-container">
+            <div class="nav-title">FATE</div>
+            <div class="nav-menu">
+				<a href="index.html" class="nav-link">
+				    <span class="en-content">Home</span>
+				    <span class="zh-content">主页</span>
+				</a>
+                <a href="about.html" class="nav-link">
+                    <span class="en-content">About</span>
+                    <span class="zh-content">关于</span>
+                </a>
+                <a href="technologies.html" class="nav-link active">
+                    <span class="en-content">Technologies</span>
+                    <span class="zh-content">技术</span>
+                </a>
+                <a href="mission.html" class="nav-link">
+                    <span class="en-content">Mission</span>
+                    <span class="zh-content">目标</span>
+                </a>
+                
+                <!-- 语言切换下拉框 -->
+                <div class="lang-dropdown">
+                    <div class="lang-trigger">
+                        <span class="lang-text">切换语言</span>
+                        <span class="lang-arrow"></span>
+                    </div>
+                    <div class="lang-options">
+                        <div class="lang-option active" data-lang="en">English</div>
+                        <div class="lang-option" data-lang="zh">简体中文</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 英雄区 -->
+    <section class="hero" id="tech-hero">
+        <div class="full-width-container">
+            <h1 class="en-content">Core Technologies</h1>
+            <h1 class="zh-content">核心技术</h1>
+            <p class="hero-subtitle en-content">Powering the next generation of sky survey</p>
+            <p class="hero-subtitle zh-content">赋能下一代巡天探测技术</p>
+        </div>
+    </section>
+
+    <!-- 技术详情 -->
+    <section class="section" id="tech-detail">
+        <div class="full-width-container">
+            <h2 class="section-title en-content">Multi-band Data Integration</h2>
+            <h2 class="section-title zh-content">多波段数据整合</h2>
+            <p class="content en-content">
+                FATE integrates heterogeneous data from different astronomical observation platforms, including ground-based optical telescopes, space-based X-ray telescopes, and radio interferometers. 
+                We use standardized data formats and adaptive calibration algorithms to eliminate systematic errors between different datasets, ensuring data consistency and comparability.
+            </p>
+            <p class="content zh-content">
+                FATE 整合来自不同天文观测平台的异构数据，包括地面光学望远镜、空间X射线望远镜和射电干涉仪。
+                我们采用标准化数据格式和自适应校准算法，消除不同数据集之间的系统误差，保证数据的一致性和可比性。
+            </p>
+
+            <h2 class="section-title en-content" style="margin-top: 2rem;">Intelligent Information Fusion</h2>
+            <h2 class="section-title zh-content" style="margin-top: 2rem;">智能信息融合</h2>
+            <p class="content en-content">
+                Our proprietary information fusion framework combines rule-based reasoning and deep learning models to extract meaningful signals from noisy astronomical data. 
+                The framework can automatically identify transient event candidates, classify event types (e.g., supernovae, gamma-ray bursts, gravitational wave counterparts), and prioritize high-value events for follow-up observations.
+            </p>
+            <p class="content zh-content">
+                我们自主研发的信息融合框架结合了基于规则的推理和深度学习模型，从含噪的天文数据中提取有意义的信号。
+                该框架可自动识别瞬变事件候选体，分类事件类型（如超新星、伽马射线暴、引力波对应体），并对高价值事件进行优先级排序，以便开展后续观测。
+            </p>
+
+            <h2 class="section-title en-content" style="margin-top: 2rem;">Real-time All-sky Monitoring</h2>
+            <h2 class="section-title zh-content" style="margin-top: 2rem;">实时全天区监测</h2>
+            <p class="content en-content">
+                The system can complete data preprocessing, event detection, and alert distribution within minutes, enabling rapid response to short-lived cosmic transient events (e.g., fast radio bursts).
+            </p>
+            <p class="content zh-content">
+                系统能在数分钟内完成数据预处理、事件检测和警报分发，实现对短寿命宇宙瞬变事件（如快速射电暴）的快速响应。
+            </p>
+
+            <!-- 技术标签扩展 -->
+            <div class="tech-tags" style="margin-top: 2rem;">
+                <div class="tag en-content">Adaptive Calibration</div>
+                <div class="tag zh-content">自适应校准</div>
+                <div class="tag en-content">Deep Learning Classification</div>
+                <div class="tag zh-content">深度学习分类</div>
+                <div class="tag en-content">Distributed Computing</div>
+                <div class="tag zh-content">分布式计算</div>
+                <div class="tag en-content">Real-time Alert System</div>
+                <div class="tag zh-content">实时警报系统</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="full-width-container">
+            <p class="en-content">By B.Lan and X.Chen</p>
+            <p class="zh-content">作者：兰博文 & 陈心缘</p>
+            <p>FATE © 2026 | All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

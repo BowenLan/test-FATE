@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 保留原有 title 和样式链接 -->
+    <title>About - FATE</title> <!-- 不同页面对应不同 title -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- 修正后的预加载脚本：仅初始化语言样式，无 !important，不干扰 JS 实时修改 -->
+    <script>
+        (function() {
+            const currentLang = localStorage.getItem('fate-lang') || 'en';
+            // 1. 初始化 html lang 属性
+            document.documentElement.lang = currentLang === 'zh' ? 'zh-CN' : 'en';
+            // 2. 预加载初始语言样式（无 !important，让 JS 可覆盖）
+            const style = document.createElement('style');
+            style.textContent = currentLang === 'zh' 
+                ? `.zh-content { display: block; } .en-content { display: none; }`
+                : `.zh-content { display: none; } .en-content { display: block; }`;
+            document.head.appendChild(style);
+        })();
+    </script>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav>
+        <div class="nav-container">
+            <div class="nav-title">FATE</div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link active">
+                    <span class="en-content">Home</span>
+                    <span class="zh-content">主页</span>
+                </a>
+                <a href="About.html" class="nav-link">
+                    <span class="en-content">About</span>
+                    <span class="zh-content">关于</span>
+                </a>
+                <a href="Technologies.html" class="nav-link">
+                    <span class="en-content">Technologies</span>
+                    <span class="zh-content">技术</span>
+                </a>
+                <a href="Mission.html" class="nav-link">
+                    <span class="en-content">Mission</span>
+                    <span class="zh-content">目标</span>
+                </a>
+                
+                <!-- 语言切换下拉框 -->
+                <div class="lang-dropdown">
+                    <div class="lang-trigger">
+                        <span class="lang-text">切换语言</span>
+                        <span class="lang-arrow"></span> <!-- CSS绘制箭头 -->
+                    </div>
+                    <div class="lang-options">
+                        <div class="lang-option active" data-lang="en">English</div>
+                        <div class="lang-option" data-lang="zh">简体中文</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 核心英雄区（结构完全保留，仅样式优化） -->
+    <section class="hero" id="about">
+        <div class="full-width-container">
+            <h1>FATE</h1>
+            <p class="hero-subtitle en-content">Feixing All-sky Transient Exploration</p>
+            <p class="hero-subtitle zh-content">飞星全天区瞬变源巡天探测计划</p>
+        </div>
+    </section>
+
+    <!-- 项目简介 -->
+    <section class="section" id="about-section">
+        <div class="full-width-container">
+            <h2 class="section-title en-content">About The Project</h2>
+            <h2 class="section-title zh-content">关于项目</h2>
+            <p class="content en-content">
+                Feixing All-sky Transient Exploration (FATE) is a sky survey project based on multi-band data and information fusion technology, dedicated to searching for cosmic astronomical events.
+            </p>
+            <p class="content zh-content">
+                飞星全天区瞬变源巡天探测计划（FATE）是一项基于多波段数据与信息融合技术的巡天项目，致力于搜寻宇宙中的各类天文瞬变事件。
+            </p>
+        </div>
+    </section>
+
+    <!-- 核心技术 -->
+    <section class="section" id="technologies-section">
+        <div class="full-width-container">
+            <h2 class="section-title en-content">Core Technologies</h2>
+            <h2 class="section-title zh-content">核心技术</h2>
+            <div class="tech-tags">
+                <div class="tag en-content">Multi-band Data</div>
+                <div class="tag zh-content">多波段数据</div>
+                <div class="tag en-content">Information Fusion</div>
+                <div class="tag zh-content">信息融合</div>
+                <div class="tag en-content">All-sky Survey</div>
+                <div class="tag zh-content">全天巡天</div>
+                <div class="tag en-content">Astronomical Event Detection</div>
+                <div class="tag zh-content">天文事件检测</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 项目目标 -->
+    <section class="section" id="mission-section">
+        <div class="full-width-container">
+            <h2 class="section-title en-content">Mission & Goal</h2>
+            <h2 class="section-title zh-content">使命与目标</h2>
+            <p class="content en-content">
+                Focus on the detection and research of cosmic astronomical transient events, explore the mysteries of the universe through advanced data processing and fusion technology.
+            </p>
+            <p class="content zh-content">
+                专注于宇宙天文瞬变事件的探测与研究，通过先进的数据处理与融合技术，探索宇宙奥秘。
+            </p>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="full-width-container">
+            <p class="en-content">By B.Lan and X.Chen</p>
+            <p class="zh-content">作者：兰博文 & 陈心缘</p>
+            <p>FATE © 2026 | All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

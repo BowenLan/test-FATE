@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 保留原有 title 和样式链接 -->
+    <title>About - FATE</title> <!-- 不同页面对应不同 title -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- 修正后的预加载脚本：仅初始化语言样式，无 !important，不干扰 JS 实时修改 -->
+    <script>
+        (function() {
+            const currentLang = localStorage.getItem('fate-lang') || 'en';
+            // 1. 初始化 html lang 属性
+            document.documentElement.lang = currentLang === 'zh' ? 'zh-CN' : 'en';
+            // 2. 预加载初始语言样式（无 !important，让 JS 可覆盖）
+            const style = document.createElement('style');
+            style.textContent = currentLang === 'zh' 
+                ? `.zh-content { display: block; } .en-content { display: none; }`
+                : `.zh-content { display: none; } .en-content { display: block; }`;
+            document.head.appendChild(style);
+        })();
+    </script>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav>
+        <div class="nav-container">
+            <div class="nav-title">FATE</div>
+            <div class="nav-menu">
+				<a href="index.html" class="nav-link">
+				    <span class="en-content">Home</span>
+				    <span class="zh-content">主页</span>
+				</a>
+                <a href="About.html" class="nav-link">
+                    <span class="en-content">About</span>
+                    <span class="zh-content">关于</span>
+                </a>
+                <a href="Technologies.html" class="nav-link">
+                    <span class="en-content">Technologies</span>
+                    <span class="zh-content">技术</span>
+                </a>
+                <a href="Mission.html" class="nav-link active">
+                    <span class="en-content">Mission</span>
+                    <span class="zh-content">目标</span>
+                </a>
+                
+                <!-- 语言切换下拉框 -->
+                <div class="lang-dropdown">
+                    <div class="lang-trigger">
+                        <span class="lang-text">切换语言</span>
+                        <span class="lang-arrow"></span>
+                    </div>
+                    <div class="lang-options">
+                        <div class="lang-option active" data-lang="en">English</div>
+                        <div class="lang-option" data-lang="zh">简体中文</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 英雄区 -->
+    <section class="hero" id="mission-hero">
+        <div class="full-width-container">
+            <h1 class="en-content">Mission & Goals</h1>
+            <h1 class="zh-content">使命与目标</h1>
+            <p class="hero-subtitle en-content">Uncovering the universe's hidden transient events</p>
+            <p class="hero-subtitle zh-content">揭开宇宙中隐藏的瞬变事件</p>
+        </div>
+    </section>
+
+    <!-- 目标详情 -->
+    <section class="section" id="mission-detail">
+        <div class="full-width-container">
+            <h2 class="section-title en-content">Core Mission</h2>
+            <h2 class="section-title zh-content">核心使命</h2>
+            <p class="content en-content">
+                FATE's core mission is to build a comprehensive, real-time, and high-precision all-sky transient event monitoring system, 
+                promote the discovery of new types of cosmic transient phenomena, and deepen humanity's understanding of the extreme physical processes in the universe. 
+                We are committed to making FATE a global platform for transient astronomy research, facilitating international cooperation and knowledge sharing.
+            </p>
+            <p class="content zh-content">
+                FATE 的核心使命是构建一套全面、实时、高精度的全天区瞬变事件监测系统，
+                推动新型宇宙瞬变现象的发现，深化人类对宇宙极端物理过程的理解。
+                我们致力于将 FATE 打造为全球瞬变天文研究的平台，促进国际合作与知识共享。
+            </p>
+
+            <h2 class="section-title en-content" style="margin-top: 2rem;">Short-term Goals (2024-2027)</h2>
+            <h2 class="section-title zh-content" style="margin-top: 2rem;">短期目标（2024-2027）</h2>
+            <p class="content en-content">
+                1. Complete the construction of the multi-band data integration platform and realize real-time processing of 80% of the global public astronomical data.<br>
+                2. Develop and validate the intelligent event detection algorithm, achieving a detection accuracy of over 95% for known transient event types.<br>
+            </p>
+            <p class="content zh-content">
+                1. 完成多波段数据整合平台搭建，实现全球80%公开天文数据的实时处理。<br>
+                2. 研发并验证智能事件检测算法，对已知瞬变事件类型的检测准确率达到95%以上。<br>
+            </p>
+
+            <h2 class="section-title en-content" style="margin-top: 2rem;">Long-term Goals (2028-2035)</h2>
+            <h2 class="section-title zh-content" style="margin-top: 2rem;">长期目标（2028-2035）</h2>
+            <p class="content en-content">
+                1. Discover at least 5 new types of cosmic transient events and publish breakthrough research results in top scientific journals.<br>
+                2. Build a standardized data and algorithm sharing platform to promote the development of the global transient astronomy community.
+            </p>
+            <p class="content zh-content">
+                1. 发现至少5种新型宇宙瞬变事件，在顶级科学期刊发表突破性研究成果。<br>
+                2. 搭建标准化的数据与算法共享平台，推动全球瞬变天文领域的发展。
+            </p>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="full-width-container">
+            <p class="en-content">By B.Lan and X.Chen</p>
+            <p class="zh-content">作者：兰博文 & 陈心缘</p>
+            <p>FATE © 2026 | All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

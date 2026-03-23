@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 保留原有 title 和样式链接 -->
+    <title>About - FATE</title> <!-- 不同页面对应不同 title -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- 修正后的预加载脚本：仅初始化语言样式，无 !important，不干扰 JS 实时修改 -->
+    <script>
+        (function() {
+            const currentLang = localStorage.getItem('fate-lang') || 'en';
+            // 1. 初始化 html lang 属性
+            document.documentElement.lang = currentLang === 'zh' ? 'zh-CN' : 'en';
+            // 2. 预加载初始语言样式（无 !important，让 JS 可覆盖）
+            const style = document.createElement('style');
+            style.textContent = currentLang === 'zh' 
+                ? `.zh-content { display: block; } .en-content { display: none; }`
+                : `.zh-content { display: none; } .en-content { display: block; }`;
+            document.head.appendChild(style);
+        })();
+    </script>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav>
+        <div class="nav-container">
+            <div class="nav-title">FATE</div>
+            <div class="nav-menu">
+				<a href="index.html" class="nav-link">
+				    <span class="en-content">Home</span>
+				    <span class="zh-content">主页</span>
+				</a>
+                <a href="about.html" class="nav-link active">
+                    <span class="en-content">About</span>
+                    <span class="zh-content">关于</span>
+                </a>
+                <a href="technologies.html" class="nav-link">
+                    <span class="en-content">Technologies</span>
+                    <span class="zh-content">技术</span>
+                </a>
+                <a href="mission.html" class="nav-link">
+                    <span class="en-content">Mission</span>
+                    <span class="zh-content">目标</span>
+                </a>
+                
+                <!-- 语言切换下拉框 -->
+                <div class="lang-dropdown">
+                    <div class="lang-trigger">
+                        <span class="lang-text">切换语言</span>
+                        <span class="lang-arrow"></span>
+                    </div>
+                    <div class="lang-options">
+                        <div class="lang-option active" data-lang="en">English</div>
+                        <div class="lang-option" data-lang="zh">简体中文</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 英雄区 -->
+    <section class="hero" id="about-hero">
+        <div class="full-width-container">
+            <h1 class="en-content">About FATE</h1>
+            <h1 class="zh-content">关于 FATE</h1>
+            <p class="hero-subtitle en-content">Exploring the universe's transient secrets</p>
+            <p class="hero-subtitle zh-content">探索宇宙瞬变现象的奥秘</p>
+        </div>
+    </section>
+
+    <!-- 项目详情 -->
+    <section class="section" id="about-detail">
+        <div class="full-width-container">
+            <h2 class="section-title en-content">Project Background</h2>
+            <h2 class="section-title zh-content">项目背景</h2>
+            <p class="content en-content">
+                The Feixing All-sky Transient Exploration (FATE) project was initiated in 2025, led by Chinese astronomy enthusiasts. 
+                With the rapid development of multi-band astronomical observation technology, traditional single-band survey methods can no longer meet the needs of detecting complex cosmic transient events. 
+                FATE aims to fill this gap by integrating data from optical, radio, X-ray, and gamma-ray telescopes to achieve comprehensive all-sky transient detection.
+            </p>
+            <p class="content zh-content">
+                飞星全天区瞬变源巡天探测计划（FATE）于2025年启动，由中国天文爱好者发起。
+                随着多波段天文观测技术的飞速发展，传统单波段巡天方式已无法满足探测复杂宇宙瞬变事件的需求。
+                FATE 旨在填补这一空白，整合光学、射电、X射线和伽马射线望远镜的数据，实现全方位的全天区瞬变源探测。
+            </p>
+
+            <h2 class="section-title en-content" style="margin-top: 2rem;">Project Team</h2>
+            <h2 class="section-title zh-content" style="margin-top: 2rem;">项目团队</h2>
+            <p class="content en-content">
+                The team acquires multi-dimensional astronomical data to ensure the accuracy and comprehensiveness of research results.
+                The core team has rich experience in cosmic transient detection.
+            </p>
+            <p class="content zh-content">
+                团队获取多维度天文数据，确保研究成果的准确性和全面性。
+                核心团队在宇宙瞬变源探测领域拥有丰富经验。
+            </p>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="full-width-container">
+            <p class="en-content">By B.Lan and X.Chen</p>
+            <p class="zh-content">作者：兰博文 & 陈心缘</p>
+            <p>FATE © 2026 | All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
