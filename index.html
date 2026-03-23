@@ -10,7 +10,6 @@
     <script>
         (function() {
             const currentLang = localStorage.getItem('fate-lang') || 'en';
-            // 1. 初始化 html lang 属性
             document.documentElement.lang = currentLang === 'zh' ? 'zh-CN' : 'en';
             // 2. 预加载初始语言样式（无 !important，让 JS 可覆盖）
             const style = document.createElement('style');
