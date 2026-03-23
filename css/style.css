@@ -1,0 +1,309 @@
+/* 全局重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+body {
+    line-height: 1.6;
+    color: #333;
+}
+
+/* 导航栏核心样式 */
+nav {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    width: 100%; /* 导航栏全屏无间隔 */
+}
+
+.nav-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+}
+
+/* 导航链接：固定尺寸，杜绝悬浮偏移 */
+.nav-link {
+    text-decoration: none;
+    color: #555;
+    font-size: 1rem;
+    font-weight: 500;
+    position: relative;
+    padding: 0.5rem 0;
+    /* 固定最小宽度，彻底防止文字变化导致偏移 */
+    min-width: max-content;
+    /* 所有样式平滑过渡 */
+    transition: all 0.35s ease;
+}
+
+/* 悬浮态：文字变色 + 阴影模拟加粗（不改变布局） */
+.nav-link:hover {
+    color: #2980b9;
+    /* 用阴影替代font-weight，零尺寸变化，无偏移 */
+    text-shadow: 0 0 0.1px currentColor;
+}
+
+/* 底部横线：平滑展开 */
+.nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #2980b9;
+    transition: width 0.35s ease;
+}
+
+/* 悬浮时横线展开 */
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* 激活态（当前页）：横线常驻 + 阴影模拟加粗（无偏移） */
+.nav-link.active {
+    color: #2980b9;
+    text-shadow: 0 0 0.1px currentColor;
+}
+.nav-link.active::after {
+    width: 100%;
+}
+
+/* 语言下拉框样式（同步修复，防止语言按钮偏移） */
+.lang-dropdown {
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+}
+
+.lang-trigger {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.5rem 0;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #555;
+    min-width: max-content;
+    /* 与导航链接样式统一 */
+    transition: all 0.35s ease;
+}
+
+/* 悬浮时同步变色+阴影加粗，无布局偏移 */
+.lang-dropdown:hover .lang-trigger {
+    color: #2980b9;
+    text-shadow: 0 0 0.1px currentColor;
+}
+
+/* CSS绘制下拉箭头（替代^字符） */
+.lang-arrow {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #555;
+    transition: all 0.35s ease;
+}
+
+/* 悬浮时箭头颜色同步 */
+.lang-dropdown:hover .lang-arrow {
+    border-top-color: #2980b9;
+}
+
+/* 下拉展开时箭头旋转 */
+.lang-dropdown.open .lang-arrow {
+    transform: rotate(180deg);
+    border-top-color: #2980b9;
+}
+
+/* 下拉选项容器 */
+.lang-options {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 4px;
+    padding: 0.5rem 0;
+    min-width: 120px;
+    display: none;
+    z-index: 101;
+}
+
+.lang-dropdown.open .lang-options {
+    display: block;
+}
+
+/* 下拉选项样式（与导航栏逻辑一致） */
+.lang-option {
+    padding: 0.7rem 1.2rem;
+    color: #555;
+    font-size: 1rem;
+    position: relative;
+    transition: all 0.35s ease;
+}
+
+/* 选项悬浮态 */
+.lang-option:hover {
+    background-color: #f5f5f5;
+    color: #2980b9;
+    text-shadow: 0 0 0.1px currentColor;
+}
+
+/* 选项选中态：底部横线（与导航栏统一） */
+.lang-option.active {
+    color: #2980b9;
+    text-shadow: 0 0 0.1px currentColor;
+}
+.lang-option.active::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 1.2rem;
+    width: calc(100% - 2.4rem);
+    height: 2px;
+    background-color: #2980b9;
+}
+
+/* 全屏容器：内容无间隔铺满 */
+.full-width-container {
+    width: 100%;
+    padding: 2rem 2rem; /* 仅保留上下内边距，左右无间隔 */
+}
+
+/* 英雄区样式（核心修改：添加背景图+渐变蒙版） */
+.hero {
+    background: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center right;
+    background-size: cover;
+    position: relative;
+    min-height: 40vh; /* 保证英雄区高度 */
+    display: flex;
+    align-items: Center;
+}
+
+/* 渐变蒙版：左侧深色半透明覆盖，右侧透明，文字区域更清晰 */
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(248,249,250,0.95) 0%, rgba(248,249,250,0.4) 50%, rgba(248,249,250,0) 100%);
+    z-index: 1;
+}
+
+.hero .full-width-container {
+    position: relative;
+    z-index: 2; /* 保证文字在蒙版上层 */
+}
+
+.hero h1 {
+    font-size: 4rem;
+    font-weight: 800;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    color: #666;
+}
+
+/* 通用区块样式 */
+.section {
+    padding: 3rem 0;
+    border-bottom: 1px solid #eee;
+}
+
+.section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+}
+
+.content {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #555;
+    width: 100%; /* 内容全屏 */
+}
+
+/* 技术标签样式 */
+.tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.tag {
+    background-color: #e3f2fd;
+    color: #2980b9;
+    padding: 0.5rem 1.2rem;
+    border-radius: 20px;
+    font-size: 1rem;
+}
+
+/* 页脚样式 */
+footer {
+    background-color: #2c3e50;
+    color: #fff;
+    padding: 2rem 0;
+}
+
+footer p {
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+}
+
+/* 语言内容切换控制（默认隐藏中文） */
+.zh-content {
+    display: none;
+}
+
+/* 响应式适配 */
+@media (max-width: 768px) {
+    .nav-container {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .nav-menu {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero {
+        min-height: 40vh; /* 移动端降低英雄区高度 */
+    }
+
+    .full-width-container {
+        padding: 1.5rem 1rem;
+    }
+}
